@@ -4,7 +4,8 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            UI.PrintLogInPage(); // Skriver ut log-in sidan och kräver rätt användarnamn/lösenord
+
         }
     }
 }
