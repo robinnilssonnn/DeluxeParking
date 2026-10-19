@@ -21,6 +21,9 @@ namespace DeluxeParking
                 string password = Console.ReadLine();
                 if (username == "Admin" && password == "1234")
                 {
+                    Console.WriteLine();
+                    Console.WriteLine("\tDu loggas in.");
+                    Thread.Sleep(1000);
                     break;
                 }
                 else
@@ -31,6 +34,35 @@ namespace DeluxeParking
                 }
 
             }
+        }
+
+        public static int PrintMenu()
+        {
+            while (true)
+            {
+                Console.Clear();
+                Console.WriteLine();
+                Console.WriteLine("----------------------- DELUXE PARKING ADMINISTRATION -----------------------");
+                Console.WriteLine();
+                Console.WriteLine("\t1. Visa översikt parkering");
+                Console.WriteLine("\t2. Checka in fordon");
+                Console.WriteLine("\t3. Checka ut fordon");
+                Console.WriteLine("\t4. Logga ut");
+                Console.WriteLine("\t5. Avsluta");
+                Console.WriteLine();
+                if (int.TryParse(Console.ReadLine(), out int input) && input >= 1 && input <= 5)
+                {
+                    return input;
+                }
+                else
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("\tOgiltig valt. Tryck för att försöka igen.");
+                    Console.ReadKey(true);
+                }
+            }
+            
+
         }
     }
 }
