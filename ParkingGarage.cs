@@ -29,7 +29,12 @@ namespace DeluxeParking
 
             for (int i = 0; i < garage.Length; i++)
             {
-                Console.WriteLine($"\tPlats {i + 1}");
+                Console.Write($"\tPlats {i + 1} ");
+
+                if (garage[i].Count == 0)
+                {
+                    Console.WriteLine("\tLedigt");
+                }
             }
         }
     }

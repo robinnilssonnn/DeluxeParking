@@ -5,7 +5,7 @@
         static void Main(string[] args)
         {
             ParkingGarage parkingGarage = new ParkingGarage(15); // Skapar ett parkeringsgarage som har 15 platser och tar Vehicle-objekt
-            UI.PrintLogInPage(); // Skriver ut log-in sidan och kräver rätt användarnamn/lösenord
+            //UI.PrintLogInPage();
             int menuPick = UI.PrintMenu(); // Skriver ut menyn och levererar ett menyval i form av en int
 
             switch(menuPick)

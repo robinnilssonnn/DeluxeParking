@@ -48,8 +48,7 @@ namespace DeluxeParking
                 Console.WriteLine("\t2. Checka in fordon");
                 Console.WriteLine("\t3. Checka ut fordon");
                 Console.WriteLine("\t4. Logga ut");
-                Console.WriteLine("\t5. Avsluta");
-                Console.WriteLine();
+                Console.Write("\t5. Avsluta ");
                 if (int.TryParse(Console.ReadLine(), out int input) && input >= 1 && input <= 5)
                 {
                     return input;
