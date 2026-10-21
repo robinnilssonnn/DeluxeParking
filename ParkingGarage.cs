@@ -45,6 +45,9 @@ namespace DeluxeParking
 
         public static void CheckInVehicle(List<Vehicle>[] garage, Vehicle newVehicle)
         {
+
+            bool parkingFound = false;
+
             if(newVehicle is Car)
             {
                 for(int i = 0;i < garage.Length - 1; i++)
@@ -53,10 +56,16 @@ namespace DeluxeParking
                     {
                         garage[i].Add(newVehicle);
                         Console.WriteLine($"\tBil med registreringsnummer {newVehicle.RegistrationNumber} tillagd på plats {i + 1}.");
+                        parkingFound = true;
                         break;
                     }
                 }
+                if (!parkingFound)
+                {
+                    PrintParkingNotFound();
+                }
             }
+
             if (newVehicle is Bus)
             {
                 for (int i = 0; i < garage.Length; i++)
@@ -66,13 +75,32 @@ namespace DeluxeParking
                         garage[i].Add(newVehicle);
                         garage[i + 1].Add(newVehicle);
                         Console.WriteLine($"\tBuss med registreringsnummer {newVehicle.RegistrationNumber} tillagd på plats {i + 1} och {i + 2}.");
+                        parkingFound = true;
                         break;
                     }
                 }
+                if (!parkingFound)
+                {
+                    PrintParkingNotFound();
+                }
+
             }
             if (newVehicle is Motorcycle)
             {
+                for (int i = 0; i < garage.Length; i++)
+                {
+                    if (garage[i].Count == 1 && garage[i][0] is Motorcycle)
+                    {
+                        garage[i].Add(newVehicle);
+                        parkingFound = true;
+                        break;
+                    }
+                }
 
+                if(!parkingFound)
+                {
+                    PrintParkingNotFound();
+                }
             }
         }
 
@@ -105,5 +133,14 @@ namespace DeluxeParking
             }
             
         }
+
+        public static void PrintParkingNotFound()
+        {
+            Console.WriteLine();
+            Console.WriteLine("Parkeringsplats saknades för fordonstypen. Den får tyvärr ingen plats.");
+            Console.WriteLine("Tryck för att återgå till menyn.");
+            Console.ReadKey(true);
+        }
+        
     }
 }
