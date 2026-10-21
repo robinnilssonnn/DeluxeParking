@@ -6,7 +6,7 @@
         {
             ParkingGarage parkingGarage = new ParkingGarage(15); // Skapar ett parkeringsgarage som har 15 platser och tar Vehicle-objekt
             //UI.PrintLogInPage();
-            int menuPick = UI.PrintMenu(); // Skriver ut menyn och levererar ett menyval i form av en int
+            int menuPick = UI.PrintMenu(parkingGarage.Vehicles); // Skriver ut menyn och levererar ett menyval i form av en int
 
             switch(menuPick)
             {

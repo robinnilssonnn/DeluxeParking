@@ -36,13 +36,16 @@ namespace DeluxeParking
             }
         }
 
-        public static int PrintMenu()
+        public static int PrintMenu(List<Vehicle>[] garage)
         {
             while (true)
             {
                 Console.Clear();
                 Console.WriteLine();
                 Console.WriteLine("----------------------- DELUXE PARKING ADMINISTRATION -----------------------");
+                Console.WriteLine();
+                ParkingGarage.PrintGarage(garage);
+                Console.WriteLine();
                 Console.WriteLine();
                 Console.WriteLine("\t1. Visa översikt parkering");
                 Console.WriteLine("\t2. Checka in fordon");
