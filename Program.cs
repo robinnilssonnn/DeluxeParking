@@ -13,7 +13,7 @@ namespace DeluxeParking
             while (appRunning)
             {
 
-                UI.PrintLogInPage();
+                //UI.PrintLogInPage();
 
                 while (true)
                 {

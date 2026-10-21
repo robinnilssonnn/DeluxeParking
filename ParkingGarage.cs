@@ -28,15 +28,31 @@ namespace DeluxeParking
             Console.WriteLine("--------------------------------------------------------------------------------");
             for (int i = 0; i < garage.Length; i++)
             {
-                Console.Write($"\tPlats {i + 1} ");
-
-                if (garage[i].Count == 0)
+                if (garage[i].Count == 2)
                 {
-                    Console.WriteLine("\tLedigt");
-                }
-                else 
-                {
+                    Console.Write($"\tPlats {i + 1} ");
                     garage[i][0].ParkedCarInfo();
+                    Console.Write($"\tPlats {i + 1} ");
+                    garage[i][1].ParkedCarInfo();
+                }
+                else if (garage[i].Count > 0 && garage[i][0] is Bus )
+                {
+                    Console.Write($"\tPlats {i + 1}-{i + 2}");
+                    garage[i][0].ParkedCarInfo();
+                    i++;
+                }
+                else
+                {
+                    Console.Write($"\tPlats {i + 1} ");
+
+                    if (garage[i].Count == 0)
+                    {
+                        Console.WriteLine("\tLedigt");
+                    }
+                    else
+                    {
+                        garage[i][0].ParkedCarInfo();
+                    }
                 }
             }
             Console.WriteLine("---------------------------------------------------------------------------------");
@@ -50,7 +66,7 @@ namespace DeluxeParking
 
             if(newVehicle is Car)
             {
-                for(int i = 0;i < garage.Length - 1; i++)
+                for(int i = 0;i < garage.Length; i++)
                 {
                     if(garage[i].Count == 0)
                     {
@@ -68,7 +84,7 @@ namespace DeluxeParking
 
             if (newVehicle is Bus)
             {
-                for (int i = 0; i < garage.Length; i++)
+                for (int i = 0; i < garage.Length - 1; i++)
                 {
                     if (garage[i].Count == 0 && garage[i + 1].Count == 0)
                     {
@@ -85,19 +101,35 @@ namespace DeluxeParking
                 }
 
             }
+            
+            
             if (newVehicle is Motorcycle)
             {
                 for (int i = 0; i < garage.Length; i++)
                 {
                     if (garage[i].Count == 1 && garage[i][0] is Motorcycle)
                     {
+                        
                         garage[i].Add(newVehicle);
                         parkingFound = true;
                         break;
                     }
                 }
 
-                if(!parkingFound)
+                if (!parkingFound)
+                {
+                    for (int i = 0; i < garage.Length; i++)
+                    {
+                        if (garage[i].Count == 0)
+                        {
+                            garage[i].Add(newVehicle);
+                            parkingFound = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (!parkingFound)
                 {
                     PrintParkingNotFound();
                 }
@@ -110,6 +142,7 @@ namespace DeluxeParking
             Console.WriteLine();
             Console.Write($"\tAnge registreringsnummer för att checka ut fordon: ");
             string input = Console.ReadLine();
+            bool foundVehicle = false;
 
             for (int i = 0; i < garage.Length - 1; i++)
             {
@@ -117,11 +150,21 @@ namespace DeluxeParking
                 {
                     if (garage[i][j].RegistrationNumber == input.ToUpper())
                     {
+                        foundVehicle = true;
+
                         if (garage[i][0] is Bus)
                         {
+                            garage[i].Clear();
                             garage[i + 1].Clear();
                         }
-                        garage[i].Clear();
+                        if (garage[i][j] is Motorcycle)
+                        {
+                            garage[i].RemoveAt(j);
+                        }
+                        else
+                        {
+                            garage[i].Clear();
+                        }
                         Console.WriteLine();
                         Console.WriteLine($"\tFordon med registreringsnummer {input} utcheckat.");
                         Console.WriteLine();
@@ -130,6 +173,16 @@ namespace DeluxeParking
                         break;
                     }
                 }
+                if(foundVehicle)
+                {
+                    break;
+                }
+            }
+            if(!foundVehicle)
+            {
+                Console.WriteLine();
+                Console.WriteLine("\tInget fordon med det registreringsnummer hittades. Tryck för att återgå till menyn.");
+                Console.ReadKey(true);
             }
             
         }
@@ -137,8 +190,9 @@ namespace DeluxeParking
         public static void PrintParkingNotFound()
         {
             Console.WriteLine();
-            Console.WriteLine("Parkeringsplats saknades för fordonstypen. Den får tyvärr ingen plats.");
-            Console.WriteLine("Tryck för att återgå till menyn.");
+            Console.WriteLine("\tParkeringsplats saknades för fordonstypen. Den får tyvärr ingen plats.");
+            Console.WriteLine();
+            Console.WriteLine("\tTryck för att återgå till menyn.");
             Console.ReadKey(true);
         }
         
