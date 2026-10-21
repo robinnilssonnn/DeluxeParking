@@ -1,4 +1,6 @@
-﻿namespace DeluxeParking
+﻿using System.Diagnostics.Metrics;
+
+namespace DeluxeParking
 {
     internal class Program
     {
@@ -34,6 +36,13 @@
                         break;
 
                     case 2:
+
+                        Console.Clear();
+                        Console.WriteLine();
+                        Console.WriteLine("---------------------------- DELUXE PARKING: CHECK-OUT ----------------------------");
+                        Console.WriteLine();
+                        ParkingGarage.PrintGarage(parkingGarage.Vehicles);
+                        ParkingGarage.ChechOutVehicle(parkingGarage.Vehicles);
 
                         break;
 

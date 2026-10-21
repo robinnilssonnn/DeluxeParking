@@ -24,7 +24,7 @@ namespace DeluxeParking
         public static void PrintGarage(List<Vehicle>[] garage)
         {
             Console.WriteLine();
-            Console.WriteLine($"\t\t\t{"Fordonstyp", -15}{"Reg. nr", -15}{"Färg", -15}{"Övrig info", -15}");
+            Console.WriteLine($"\t{"Parkering", -16}{"Fordonstyp", -16}{"Reg. nr", -15}{"Färg", -15}{"Övrig info"}");
             Console.WriteLine("--------------------------------------------------------------------------------");
             for (int i = 0; i < garage.Length; i++)
             {
@@ -39,8 +39,6 @@ namespace DeluxeParking
                     garage[i][0].ParkedCarInfo();
                 }
             }
-            Console.WriteLine();
-            Console.WriteLine();
             Console.WriteLine("---------------------------------------------------------------------------------");
 
         }
@@ -78,5 +76,34 @@ namespace DeluxeParking
             }
         }
 
+        public static void ChechOutVehicle(List<Vehicle>[] garage)
+        {
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.Write($"\tAnge registreringsnummer för att checka ut fordon: ");
+            string input = Console.ReadLine();
+
+            for (int i = 0; i < garage.Length - 1; i++)
+            {
+                for (int j = 0; j < garage[i].Count; j++)
+                {
+                    if (garage[i][j].RegistrationNumber == input.ToUpper())
+                    {
+                        if (garage[i][0] is Bus)
+                        {
+                            garage[i + 1].Clear();
+                        }
+                        garage[i].Clear();
+                        Console.WriteLine();
+                        Console.WriteLine($"\tFordon med registreringsnummer {input} utcheckat.");
+                        Console.WriteLine();
+                        Console.WriteLine("\tTryck för att återgå till menyn.");
+                        Console.ReadKey(true);
+                        break;
+                    }
+                }
+            }
+            
+        }
     }
 }

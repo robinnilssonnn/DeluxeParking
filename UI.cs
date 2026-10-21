@@ -42,7 +42,7 @@ namespace DeluxeParking
             {
                 Console.Clear();
                 Console.WriteLine();
-                Console.WriteLine("-------------------------- DELUXE PARKING: ÖVERSIKT --------------------------");
+                Console.WriteLine("--------------------------- DELUXE PARKING: ÖVERSIKT ---------------------------");
                 Console.WriteLine();
                 Console.WriteLine();
                 ParkingGarage.PrintGarage(garage);
@@ -59,7 +59,7 @@ namespace DeluxeParking
                 else
                 {
                     Console.WriteLine();
-                    Console.WriteLine("\tOgiltig valt. Tryck för att försöka igen.");
+                    Console.WriteLine("\tOgiltigt val. Tryck för att försöka igen.");
                     Console.ReadKey(true);
                 }
             }
