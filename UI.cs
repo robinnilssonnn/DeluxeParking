@@ -14,6 +14,7 @@ namespace DeluxeParking
                 Console.WriteLine();
                 Console.WriteLine("---------------------------- DELUXE PARKING: LOGGA IN ----------------------------");
                 Console.WriteLine();
+                Console.WriteLine();
                 Console.Write("\tAnvändarnamn: ");
                 string username = Console.ReadLine();
                 Console.WriteLine();
@@ -23,7 +24,7 @@ namespace DeluxeParking
                 {
                     Console.WriteLine();
                     Console.WriteLine("\tDu loggas in.");
-                    Thread.Sleep(1000);
+                    Thread.Sleep(1500);
                     break;
                 }
                 else
@@ -65,6 +66,22 @@ namespace DeluxeParking
             }
             
 
+        }
+
+        public static void LogOut()
+        {
+            Console.WriteLine();
+            Console.WriteLine("\tDu loggas ut.");
+            Thread.Sleep(2000);
+        }
+
+
+        public static bool CloseApp()
+        {
+            Console.WriteLine();
+            Console.WriteLine("\tProgrammet avslutas.");
+            Thread.Sleep(2000);
+            return false;
         }
     }
 }

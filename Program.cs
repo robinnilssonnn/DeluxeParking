@@ -10,18 +10,17 @@ namespace DeluxeParking
 
             bool appRunning = true;
 
-            while (appRunning)
+            while(appRunning)
             {
 
-                //UI.PrintLogInPage();
+                UI.PrintLogInPage();
 
-                while (true)
+                while(true)
                 {
 
-                    
                     int menuPick = UI.PrintMenu(parkingGarage.Vehicles); // Skriver ut menyn och levererar ett menyval i form av en int
 
-                    switch (menuPick)
+                    switch(menuPick)
                     {
 
                         case 1:
@@ -39,7 +38,6 @@ namespace DeluxeParking
                             Console.WriteLine();
                             Console.WriteLine("\tTryck för att återgå till översikten.");
                             Console.ReadKey(true);
-
                             break;
 
                         case 2:
@@ -50,29 +48,23 @@ namespace DeluxeParking
                             Console.WriteLine();
                             ParkingGarage.PrintGarage(parkingGarage.Vehicles);
                             ParkingGarage.ChechOutVehicle(parkingGarage.Vehicles);
-
                             break;
 
                         case 3:
-                            Console.WriteLine();
-                            Console.WriteLine("\tDu loggas ut.");
-                            Thread.Sleep(2000);
+
+                            UI.LogOut();
                             break;
 
                         case 4:
-                            Console.WriteLine();
-                            Console.WriteLine("\tProgrammet avslutas.");
-                            Thread.Sleep(2000);
-                            appRunning = false;
+
+                            appRunning = UI.CloseApp();
                             break;
 
                     }
 
                     break;
                 }
-                
             }
-
         }
     }
 }
