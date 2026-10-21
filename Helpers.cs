@@ -34,22 +34,22 @@ namespace DeluxeParking
             string[] colors =
 
                 {
-                    "Black",
-                    "White",
+                    "Svart",
+                    "Vit",
                     "Silver",
-                    "Grey",
-                    "Red",
-                    "Blue",
-                    "Dark Blue",
-                    "Green",
-                    "Yellow",
+                    "Grå",
+                    "Röd",
+                    "Blå",
+                    "Mörkblå",
+                    "Grön",
+                    "Gul",
                     "Orange",
-                    "Brown",
+                    "Brun",
                     "Beige",
-                    "Gold",
-                    "Bronze",
-                    "Purple",
-                    "Pink"
+                    "Guld",
+                    "Brons",
+                    "Lila",
+                    "Rosa"
                 };
 
 

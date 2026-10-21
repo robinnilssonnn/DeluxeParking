@@ -12,7 +12,7 @@ namespace DeluxeParking
             {
                 Console.Clear();
                 Console.WriteLine();
-                Console.WriteLine("----------------------- DELUXE PARKING: LOG IN -----------------------");
+                Console.WriteLine("---------------------------- DELUXE PARKING: LOGGA IN ----------------------------");
                 Console.WriteLine();
                 Console.Write("\tAnvändarnamn: ");
                 string username = Console.ReadLine();
@@ -42,16 +42,16 @@ namespace DeluxeParking
             {
                 Console.Clear();
                 Console.WriteLine();
-                Console.WriteLine("----------------------- DELUXE PARKING ADMINISTRATION -----------------------");
+                Console.WriteLine("-------------------------- DELUXE PARKING: ÖVERSIKT --------------------------");
+                Console.WriteLine();
                 Console.WriteLine();
                 ParkingGarage.PrintGarage(garage);
                 Console.WriteLine();
                 Console.WriteLine();
-                Console.WriteLine("\t1. Visa översikt parkering");
-                Console.WriteLine("\t2. Checka in fordon");
-                Console.WriteLine("\t3. Checka ut fordon");
-                Console.WriteLine("\t4. Logga ut");
-                Console.Write("\t5. Avsluta ");
+                Console.WriteLine("\t1. Checka in fordon");
+                Console.WriteLine("\t2. Checka ut fordon");
+                Console.WriteLine("\t3. Logga ut");
+                Console.Write("\t4. Avsluta ");
                 if (int.TryParse(Console.ReadLine(), out int input) && input >= 1 && input <= 5)
                 {
                     return input;

@@ -14,6 +14,16 @@ namespace DeluxeParking
             RegistrationNumber = registrationNumber;
             Color = color;
         }
+
+        public virtual void ArrivingCarInfo()
+        {
+            Console.WriteLine("\tEtt fordon av okänd typ ankommer.");
+        }
+
+        public virtual void ParkedCarInfo()
+        {
+            Console.WriteLine($"\tBil\t{RegistrationNumber}\t{Color}\t");
+        }
     }
 
     internal class Car : Vehicle
@@ -23,6 +33,16 @@ namespace DeluxeParking
         public Car(string registrationNumber, string color, bool electric) : base(registrationNumber, color)
         {
             Electric = electric;
+        }
+
+        public override void ArrivingCarInfo()
+        {
+            Console.WriteLine($"\tEn bil med registreringsnummer {RegistrationNumber} ankommer till parkeringen. ");
+        }
+
+        public override void ParkedCarInfo()
+        {
+            Console.WriteLine($"\tBil\t\t{RegistrationNumber, -15}{Color, -15}{(Electric ? "Elbil" : "Bensinbil"), -15}");
         }
     }
 
@@ -34,6 +54,16 @@ namespace DeluxeParking
         {
             Brand = brand;
         }
+
+        public override void ArrivingCarInfo()
+        {
+            Console.WriteLine($"\tEn motorcyckel med registreringsnummer {RegistrationNumber} ankommer till parkeringen. ");
+        }
+
+        public override void ParkedCarInfo()
+        {
+            Console.WriteLine($"\tMC\t\t{RegistrationNumber, -15}\t{Color, -15}\t{Brand}");
+        }
     }
 
     internal class Bus : Vehicle
@@ -43,6 +73,17 @@ namespace DeluxeParking
         public Bus(string registrationNumber, string color, int nrOfPassengers) : base(registrationNumber, color)
         {
             NrOfPassengers = nrOfPassengers;
+        }
+
+        public override void ArrivingCarInfo()
+        {
+            Console.WriteLine($"\tEn buss med registreringsnummer {RegistrationNumber} ankommer till parkeringen. ");
+        }
+    
+
+    public override void ParkedCarInfo()
+        {
+            Console.WriteLine($"\tBuss\t\t{RegistrationNumber, -15}{Color, -15}{NrOfPassengers} Passagerare");
         }
     }
 }
