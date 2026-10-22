@@ -159,7 +159,7 @@ namespace DeluxeParking
                             garage[i].Clear();
                             garage[i + 1].Clear();
                         }
-                        if (garage[i][j] is Motorcycle)
+                        else if (garage[i][j] is Motorcycle)
                         {
                             garage[i].RemoveAt(j);
                         }
@@ -170,7 +170,7 @@ namespace DeluxeParking
                         Console.WriteLine();
                         Console.WriteLine($"\tFordon med registreringsnummer {input} utcheckat.");
                         Console.WriteLine();
-                        Console.WriteLine("\tTryck för att återgå till menyn.");
+                        Console.Write("\tTryck för att återgå till menyn.");
                         Console.ReadKey(true);
                         break;
                     }
@@ -183,7 +183,7 @@ namespace DeluxeParking
             if(!foundVehicle)
             {
                 Console.WriteLine();
-                Console.WriteLine("\tInget fordon med det registreringsnummer hittades. Tryck för att återgå till menyn.");
+                Console.Write("\tInget fordon med det angivna registreringsnumret hittades. Tryck för att återgå till menyn.");
                 Console.ReadKey(true);
             }
             

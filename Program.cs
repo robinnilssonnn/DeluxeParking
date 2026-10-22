@@ -20,12 +20,12 @@ namespace DeluxeParking
                 while(appRunning)
                 {
 
-                    int menuPick = UI.PrintMenu(parkingGarage.Vehicles); // Skriver ut översikt + meny och returnerar ett menyval i form av en int
+                    char menuPick = UI.PrintMenu(parkingGarage.Vehicles); // Skriver ut översikt + meny och returnerar ett menyval i form av en int
 
                     switch(menuPick)
                     {
 
-                        case 1:
+                        case '1':
 
                             Console.Clear();
                             Console.WriteLine();
@@ -38,11 +38,11 @@ namespace DeluxeParking
                             Console.WriteLine();
                             ParkingGarage.CheckInVehicle(parkingGarage.Vehicles, newVehicle);
                             Console.WriteLine();
-                            Console.WriteLine("\tTryck för att återgå till översikten.");
+                            Console.Write("\tTryck för att återgå till menyn.");
                             Console.ReadKey(true);
                             break;
 
-                        case 2:
+                        case '2':
 
                             Console.Clear();
                             Console.WriteLine();
@@ -52,13 +52,13 @@ namespace DeluxeParking
                             ParkingGarage.ChechOutVehicle(parkingGarage.Vehicles);
                             break;
 
-                        case 3:
+                        case '3':
 
                             UI.LogOut();
                             appRunning = false;
                             break;
 
-                        case 4:
+                        case '4':
 
                             appRunning = UI.CloseApp();
                             appRunning = false;

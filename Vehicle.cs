@@ -62,8 +62,7 @@ namespace DeluxeParking
 
         public override void ParkedCarInfo()
         {
-            Console.WriteLine($"\tMC\t\t{RegistrationNumber, -15}{Color, -15}" +
-                $"{Brand}");
+            Console.WriteLine($"\tMC\t\t{RegistrationNumber, -15}{Color, -15}{Brand}");
         }
     }
 

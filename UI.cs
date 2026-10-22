@@ -23,7 +23,7 @@ namespace DeluxeParking
                 if (username == "Admin" && password == "1234")
                 {
                     Console.WriteLine();
-                    Console.WriteLine("\tDu loggas in.");
+                    Console.Write("\tDu loggas in.");
                     Thread.Sleep(1500);
                     break;
                 }
@@ -37,10 +37,11 @@ namespace DeluxeParking
             }
         }
 
-        public static int PrintMenu(List<Vehicle>[] garage)
+        public static char PrintMenu(List<Vehicle>[] garage)
         {
             while (true)
             {
+
                 Console.Clear();
                 Console.WriteLine();
                 Console.WriteLine("--------------------------- DELUXE PARKING: ÖVERSIKT ---------------------------");
@@ -53,25 +54,19 @@ namespace DeluxeParking
                 Console.WriteLine("\t2. Checka ut fordon");
                 Console.WriteLine("\t3. Logga ut");
                 Console.Write("\t4. Avsluta ");
-                if (int.TryParse(Console.ReadLine(), out int input) && input >= 1 && input <= 5)
+                ConsoleKeyInfo key = Console.ReadKey(true);
+                if(key.Key == ConsoleKey.D1 || key.Key == ConsoleKey.NumPad1 || key.Key == ConsoleKey.D2 || key.Key == ConsoleKey.NumPad2 || 
+                   key.Key == ConsoleKey.D3 || key.Key == ConsoleKey.NumPad3 || key.Key == ConsoleKey.D4 || key.Key == ConsoleKey.NumPad4) // D1 = digit 1
                 {
-                    return input;
-                }
-                else
-                {
-                    Console.WriteLine();
-                    Console.WriteLine("\tOgiltigt val. Tryck för att försöka igen.");
-                    Console.ReadKey(true);
+                    return key.KeyChar; // Gör om till en char
                 }
             }
-            
-
         }
 
         public static void LogOut()
         {
             Console.WriteLine();
-            Console.WriteLine("\tDu loggas ut.");
+            Console.Write("\tDu loggas ut.");
             Thread.Sleep(2000);
         }
 
@@ -79,7 +74,7 @@ namespace DeluxeParking
         public static bool CloseApp()
         {
             Console.WriteLine();
-            Console.WriteLine("\tProgrammet avslutas.");
+            Console.Write("\tProgrammet avslutas.");
             Thread.Sleep(2000);
             return false;
         }
