@@ -9,16 +9,18 @@ namespace DeluxeParking
             ParkingGarage parkingGarage = new ParkingGarage(15); // Skapar ett parkeringsgarage som har 15 platser och tar Vehicle-objekt
 
             bool appRunning = true;
+            bool exitApp = false;
 
-            while(appRunning)
+            while(!exitApp)
             {
 
                 UI.PrintLogInPage();
+                appRunning = true;
 
-                while(true)
+                while(appRunning)
                 {
 
-                    int menuPick = UI.PrintMenu(parkingGarage.Vehicles); // Skriver ut menyn och levererar ett menyval i form av en int
+                    int menuPick = UI.PrintMenu(parkingGarage.Vehicles); // Skriver ut översikt + meny och returnerar ett menyval i form av en int
 
                     switch(menuPick)
                     {
@@ -32,7 +34,7 @@ namespace DeluxeParking
                             Vehicle newVehicle = Helpers.GenerateRandomVehicle();
                             Console.WriteLine();
                             newVehicle.ArrivingCarInfo();
-                            Thread.Sleep(1000);
+                            Thread.Sleep(2000);
                             Console.WriteLine();
                             ParkingGarage.CheckInVehicle(parkingGarage.Vehicles, newVehicle);
                             Console.WriteLine();
@@ -53,16 +55,18 @@ namespace DeluxeParking
                         case 3:
 
                             UI.LogOut();
+                            appRunning = false;
                             break;
 
                         case 4:
 
                             appRunning = UI.CloseApp();
+                            appRunning = false;
+                            exitApp = true;
                             break;
 
                     }
 
-                    break;
                 }
             }
         }

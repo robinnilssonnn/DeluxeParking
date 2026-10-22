@@ -111,6 +111,7 @@ namespace DeluxeParking
                     {
                         
                         garage[i].Add(newVehicle);
+                        Console.WriteLine($"\tMotorcykel med registreringsnummer {newVehicle.RegistrationNumber} tillagd på plats {i}.");
                         parkingFound = true;
                         break;
                     }
@@ -123,6 +124,7 @@ namespace DeluxeParking
                         if (garage[i].Count == 0)
                         {
                             garage[i].Add(newVehicle);
+                            Console.WriteLine($"\tMotorcykel med registreringsnummer {newVehicle.RegistrationNumber} tillagd på plats {i}.");
                             parkingFound = true;
                             break;
                         }
@@ -192,8 +194,7 @@ namespace DeluxeParking
             Console.WriteLine();
             Console.WriteLine("\tParkeringsplats saknades för fordonstypen. Den får tyvärr ingen plats.");
             Console.WriteLine();
-            Console.WriteLine("\tTryck för att återgå till menyn.");
-            Console.ReadKey(true);
+
         }
         
     }
