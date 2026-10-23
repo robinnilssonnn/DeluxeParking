@@ -153,7 +153,8 @@ namespace DeluxeParking
                     if (garage[i][j].RegistrationNumber == input.ToUpper())
                     {
                         foundVehicle = true;
-                        int parkedTime = (int)(DateTime.Now - garage[i][j].ArrivalTime).TotalMinutes;
+                        double parkedTime = (DateTime.Now - garage[i][j].ArrivalTime).TotalMinutes;
+                        double cost = parkedTime * 1.5;
 
                         if (garage[i][0] is Bus && i + 1 < garage.Length)
                         {
@@ -171,9 +172,9 @@ namespace DeluxeParking
                         Console.WriteLine();
                         Console.WriteLine($"\tFordon med registreringsnummer {input} utcheckat.");
                         Console.WriteLine();
-                        Console.WriteLine($"\tTid parkerad: {parkedTime} minuter");
+                        Console.WriteLine($"\tTid parkerad: {parkedTime:F1} minuter");
                         Console.WriteLine();
-                        Console.WriteLine($"\tPris: {parkedTime * 1.5} SEK (1,5 SEK/minut)");
+                        Console.WriteLine($"\tPris: {cost:F1} SEK (1,5 SEK/minut)");
                         Console.WriteLine();
                         Console.WriteLine();
                         Console.Write("\tTryck för att återgå till menyn.");
