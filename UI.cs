@@ -37,7 +37,7 @@ namespace DeluxeParking
             }
         }
 
-        public static int PrintMenu(List<Vehicle>[] garage)
+        public static char PrintMenu(List<Vehicle>[] garage)
         {
             while (true)
             {
@@ -52,17 +52,23 @@ namespace DeluxeParking
                 Console.WriteLine("\t1. Checka in fordon");
                 Console.WriteLine("\t2. Checka ut fordon");
                 Console.WriteLine("\t3. Logga ut");
-                Console.Write("\t4. Avsluta ");
-                if (int.TryParse(Console.ReadLine(), out int input) && input >= 1 && input <= 4)
+                Console.Write("\t4. Avsluta     ");
+                ConsoleKeyInfo key = Console.ReadKey(true);
+                if(key.Key == ConsoleKey.D1 || key.Key == ConsoleKey.NumPad1 || key.Key == ConsoleKey.D2 || key.Key == ConsoleKey.NumPad2 ||
+                   key.Key == ConsoleKey.D3 || key.Key == ConsoleKey.NumPad3 || key.Key == ConsoleKey.D4 || key.Key == ConsoleKey.NumPad4)
                 {
-                    return input;
+                    return key.KeyChar;
                 }
-                else
-                {
-                    Console.WriteLine();
-                    Console.Write("\tOgiltigt val. Tryck för att försöka igen.");
-                    Console.ReadKey(true);
-                }
+                //if (int.TryParse(Console.ReadLine(), out int input) && input >= 1 && input <= 4)
+                //{
+                //    return input;
+                //}
+                //else
+                //{
+                //    Console.WriteLine();
+                //    Console.Write("\tOgiltigt val. Tryck för att försöka igen.");
+                //    Console.ReadKey(true);
+                //}
             }
             
 
