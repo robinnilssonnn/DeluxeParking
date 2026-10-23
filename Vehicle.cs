@@ -9,10 +9,13 @@ namespace DeluxeParking
         public string RegistrationNumber { get; set; }
         public string Color { get; set; }
 
-        public Vehicle(string registrationNumber, string color)
+        public DateTime ArrivalTime { get; set; }
+
+        public Vehicle(string registrationNumber, string color, DateTime arrivalTime)
         {
             RegistrationNumber = registrationNumber;
             Color = color;
+            ArrivalTime = arrivalTime;
         }
 
         public virtual void ArrivingCarInfo()
@@ -30,7 +33,7 @@ namespace DeluxeParking
     {
         public bool Electric { get; set; }
 
-        public Car(string registrationNumber, string color, bool electric) : base(registrationNumber, color)
+        public Car(string registrationNumber, string color, DateTime arrivalTime, bool electric) : base(registrationNumber, color, arrivalTime)
         {
             Electric = electric;
         }
@@ -50,7 +53,7 @@ namespace DeluxeParking
     {
         public string Brand { get; set; }
 
-        public Motorcycle(string registrationNumber, string color, string brand) : base(registrationNumber, color)
+        public Motorcycle(string registrationNumber, string color, DateTime arrivalTime, string brand) : base(registrationNumber, color, arrivalTime)
         {
             Brand = brand;
         }
@@ -71,7 +74,7 @@ namespace DeluxeParking
     {
         public int NrOfPassengers { get; set; }
 
-        public Bus(string registrationNumber, string color, int nrOfPassengers) : base(registrationNumber, color)
+        public Bus(string registrationNumber, string color, DateTime arrivalTime, int nrOfPassengers) : base(registrationNumber, color, arrivalTime)
         {
             NrOfPassengers = nrOfPassengers;
         }
