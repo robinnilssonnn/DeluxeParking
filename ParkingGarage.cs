@@ -24,8 +24,8 @@ namespace DeluxeParking
         public static void PrintGarage(List<Vehicle>[] garage)
         {
             Console.WriteLine();
-            Console.WriteLine($"\t{"Parkering", -16}{"Fordonstyp", -16}{"Reg. nr", -15}{"Färg", -12}{"Ankomsttid",-20}{"Övrig info"}");
-            Console.WriteLine("--------------------------------------------------------------------------------------------------------");
+            Console.WriteLine($"\t{"Parkering", -16}{"Fordonstyp", -16}{"Reg. nr", -15}{"Färg", -12}{"Ankomsttid",-20}{"Kostnad", -15}{"Övrig info"}");
+            Console.WriteLine("------------------------------------------------------------------------------------------------------------------");
             for (int i = 0; i < garage.Length; i++)
             {
                 if (garage[i].Count == 2)
@@ -55,7 +55,7 @@ namespace DeluxeParking
                     }
                 }
             }
-            Console.WriteLine("---------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("-------------------------------------------------------------------------------------------------------------------");
 
         }
 

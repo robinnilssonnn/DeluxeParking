@@ -12,7 +12,7 @@ namespace DeluxeParking
             {
                 Console.Clear();
                 Console.WriteLine();
-                Console.WriteLine("---------------------------------------- DELUXE PARKING: LOGGA IN ----------------------------------------");
+                Console.WriteLine("--------------------------------------------- DELUXE PARKING: LOGGA IN ---------------------------------------------");
                 Console.WriteLine();
                 Console.WriteLine();
                 Console.Write("\tAnvändarnamn: ");
@@ -33,7 +33,6 @@ namespace DeluxeParking
                     Console.Write("\tFelaktigt användarnamn eller lösenord. Tryck för att försöka igen.");
                     Console.ReadKey(true);
                 }
-
             }
         }
 
@@ -43,7 +42,7 @@ namespace DeluxeParking
             {
                 Console.Clear();
                 Console.WriteLine();
-                Console.WriteLine("--------------------------------------- DELUXE PARKING: ÖVERSIKT ---------------------------------------");
+                Console.WriteLine("-------------------------------------------- DELUXE PARKING: ÖVERSIKT --------------------------------------------");
                 Console.WriteLine();
                 Console.WriteLine();
                 ParkingGarage.PrintGarage(garage);
@@ -70,8 +69,6 @@ namespace DeluxeParking
                 //    Console.ReadKey(true);
                 //}
             }
-            
-
         }
 
         public static void LogOut()
@@ -80,7 +77,6 @@ namespace DeluxeParking
             Console.WriteLine("\tDu loggas ut.");
             Thread.Sleep(2000);
         }
-
 
         public static bool CloseApp()
         {
