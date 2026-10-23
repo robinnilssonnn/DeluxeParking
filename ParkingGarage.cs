@@ -24,8 +24,8 @@ namespace DeluxeParking
         public static void PrintGarage(List<Vehicle>[] garage)
         {
             Console.WriteLine();
-            Console.WriteLine($"\t{"Parkering", -16}{"Fordonstyp", -16}{"Reg. nr", -15}{"Färg", -15}{"Övrig info"}");
-            Console.WriteLine("--------------------------------------------------------------------------------");
+            Console.WriteLine($"\t{"Parkering", -16}{"Fordonstyp", -16}{"Reg. nr", -15}{"Färg", -12}{"Ankomsttid",-20}{"Övrig info"}");
+            Console.WriteLine("--------------------------------------------------------------------------------------------------------");
             for (int i = 0; i < garage.Length; i++)
             {
                 if (garage[i].Count == 2)
@@ -55,7 +55,7 @@ namespace DeluxeParking
                     }
                 }
             }
-            Console.WriteLine("---------------------------------------------------------------------------------");
+            Console.WriteLine("---------------------------------------------------------------------------------------------------------");
 
         }
 
@@ -71,7 +71,7 @@ namespace DeluxeParking
                     if(garage[i].Count == 0)
                     {
                         garage[i].Add(newVehicle);
-                        Console.WriteLine($"\tBil med registreringsnummer {newVehicle.RegistrationNumber} tillagd på plats {i + 1}.");
+                        Console.WriteLine($"\tBil med registreringsnummer {newVehicle.RegistrationNumber} tillagd på plats {i + 1} med ankomsttid {newVehicle.ArrivalTime}.");
                         parkingFound = true;
                         break;
                     }
@@ -90,7 +90,7 @@ namespace DeluxeParking
                     {
                         garage[i].Add(newVehicle);
                         garage[i + 1].Add(newVehicle);
-                        Console.WriteLine($"\tBuss med registreringsnummer {newVehicle.RegistrationNumber} tillagd på plats {i + 1} och {i + 2}.");
+                        Console.WriteLine($"\tBuss med registreringsnummer {newVehicle.RegistrationNumber} tillagd på plats {i + 1} och {i + 2} med ankomsttid {newVehicle.ArrivalTime}.");
                         parkingFound = true;
                         break;
                     }
@@ -111,7 +111,7 @@ namespace DeluxeParking
                     {
                         
                         garage[i].Add(newVehicle);
-                        Console.WriteLine($"\tMotorcykel med registreringsnummer {newVehicle.RegistrationNumber} tillagd på plats {i}.");
+                        Console.WriteLine($"\tMotorcykel med registreringsnummer {newVehicle.RegistrationNumber} tillagd på plats {i + 1} med ankomsttid {newVehicle.ArrivalTime}.");
                         parkingFound = true;
                         break;
                     }
@@ -124,7 +124,7 @@ namespace DeluxeParking
                         if (garage[i].Count == 0)
                         {
                             garage[i].Add(newVehicle);
-                            Console.WriteLine($"\tMotorcykel med registreringsnummer {newVehicle.RegistrationNumber} tillagd på plats {i}.");
+                            Console.WriteLine($"\tMotorcykel med registreringsnummer {newVehicle.RegistrationNumber} tillagd på plats {i + 1} med ankomsttid {newVehicle.ArrivalTime}.");
                             parkingFound = true;
                             break;
                         }
@@ -170,7 +170,7 @@ namespace DeluxeParking
                         Console.WriteLine();
                         Console.WriteLine($"\tFordon med registreringsnummer {input} utcheckat.");
                         Console.WriteLine();
-                        Console.WriteLine("\tTryck för att återgå till menyn.");
+                        Console.Write("\tTryck för att återgå till menyn.");
                         Console.ReadKey(true);
                         break;
                     }
@@ -183,7 +183,7 @@ namespace DeluxeParking
             if(!foundVehicle)
             {
                 Console.WriteLine();
-                Console.WriteLine("\tInget fordon med det registreringsnummer hittades. Tryck för att återgå till menyn.");
+                Console.Write("\tInget fordon med det registreringsnummer hittades. Tryck för att återgå till menyn.");
                 Console.ReadKey(true);
             }
             
@@ -192,7 +192,7 @@ namespace DeluxeParking
         public static void PrintParkingNotFound()
         {
             Console.WriteLine();
-            Console.WriteLine("\tParkeringsplats saknades för fordonstypen. Den får tyvärr ingen plats.");
+            Console.Write("\tParkeringsplats saknades för fordonstypen. Den får tyvärr ingen plats.");
             Console.WriteLine();
 
         }

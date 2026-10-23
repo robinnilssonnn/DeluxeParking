@@ -17,15 +17,15 @@ namespace DeluxeParking
             int vehicleType = Random.Shared.Next(1, 4);
             if (vehicleType == 1)
             {
-                return new Car(regNr, color, electric);
+                return new Car(regNr, color, DateTime.Now, electric);
             }
             else if (vehicleType == 2)
             {
-                return new Bus(regNr, color, nrOfPassengers);
+                return new Bus(regNr, color, DateTime.Now, nrOfPassengers);
             }
             else
             {
-                return new Motorcycle(regNr, color, mcBrand);
+                return new Motorcycle(regNr, color, DateTime.Now, mcBrand);
             }
         }
 

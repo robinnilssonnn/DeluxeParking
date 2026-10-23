@@ -12,7 +12,7 @@ namespace DeluxeParking
             {
                 Console.Clear();
                 Console.WriteLine();
-                Console.WriteLine("---------------------------- DELUXE PARKING: LOGGA IN ----------------------------");
+                Console.WriteLine("---------------------------------------- DELUXE PARKING: LOGGA IN ----------------------------------------");
                 Console.WriteLine();
                 Console.WriteLine();
                 Console.Write("\tAnvändarnamn: ");
@@ -43,7 +43,7 @@ namespace DeluxeParking
             {
                 Console.Clear();
                 Console.WriteLine();
-                Console.WriteLine("--------------------------- DELUXE PARKING: ÖVERSIKT ---------------------------");
+                Console.WriteLine("--------------------------------------- DELUXE PARKING: ÖVERSIKT ---------------------------------------");
                 Console.WriteLine();
                 Console.WriteLine();
                 ParkingGarage.PrintGarage(garage);
@@ -53,14 +53,14 @@ namespace DeluxeParking
                 Console.WriteLine("\t2. Checka ut fordon");
                 Console.WriteLine("\t3. Logga ut");
                 Console.Write("\t4. Avsluta ");
-                if (int.TryParse(Console.ReadLine(), out int input) && input >= 1 && input <= 5)
+                if (int.TryParse(Console.ReadLine(), out int input) && input >= 1 && input <= 4)
                 {
                     return input;
                 }
                 else
                 {
                     Console.WriteLine();
-                    Console.WriteLine("\tOgiltigt val. Tryck för att försöka igen.");
+                    Console.Write("\tOgiltigt val. Tryck för att försöka igen.");
                     Console.ReadKey(true);
                 }
             }

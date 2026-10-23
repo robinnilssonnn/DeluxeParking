@@ -45,7 +45,7 @@ namespace DeluxeParking
 
         public override void ParkedCarInfo()
         {
-            Console.WriteLine($"\tBil\t\t{RegistrationNumber, -15}{Color, -15}{(Electric ? "Elbil" : "Bensinbil"), -15}");
+            Console.WriteLine($"\tBil\t\t{RegistrationNumber, -15}{Color, -12}{ArrivalTime,-20:yyyy-MM-dd HH:mm}{(Electric ? "Elbil" : "Bensinbil"), -15}");
         }
     }
 
@@ -65,8 +65,7 @@ namespace DeluxeParking
 
         public override void ParkedCarInfo()
         {
-            Console.WriteLine($"\tMC\t\t{RegistrationNumber, -15}{Color, -15}" +
-                $"{Brand}");
+            Console.WriteLine($"\tMC\t\t{RegistrationNumber, -15}{Color, -12}{ArrivalTime, -20:yyyy-MM-dd HH:mm}{Brand}");
         }
     }
 
@@ -87,7 +86,7 @@ namespace DeluxeParking
 
     public override void ParkedCarInfo()
         {
-            Console.WriteLine($"\tBuss\t\t{RegistrationNumber, -15}{Color, -15}{NrOfPassengers} Passagerare");
+            Console.WriteLine($"\tBuss\t\t{RegistrationNumber, -15}{Color, -12}{ArrivalTime,-20:yyyy-MM-dd HH:mm}{NrOfPassengers} Passagerare");
         }
     }
 }
