@@ -12,7 +12,7 @@ namespace DeluxeParking
             {
                 Console.Clear();
                 Console.WriteLine();
-                Console.WriteLine("--------------------------------------------- DELUXE PARKING: LOGGA IN ---------------------------------------------");
+                Console.WriteLine("---------------------------------------------- DELUXE PARKING: LOGGA IN ----------------------------------------------");
                 Console.WriteLine();
                 Console.WriteLine();
                 Console.Write("\tAnvändarnamn: ");
@@ -42,7 +42,7 @@ namespace DeluxeParking
             {
                 Console.Clear();
                 Console.WriteLine();
-                Console.WriteLine("-------------------------------------------- DELUXE PARKING: ÖVERSIKT --------------------------------------------");
+                Console.WriteLine("--------------------------------------------- DELUXE PARKING: ÖVERSIKT ---------------------------------------------");
                 Console.WriteLine();
                 Console.WriteLine();
                 ParkingGarage.PrintGarage(garage);
@@ -50,11 +50,13 @@ namespace DeluxeParking
                 Console.WriteLine();
                 Console.WriteLine("\t1. Checka in fordon");
                 Console.WriteLine("\t2. Checka ut fordon");
-                Console.WriteLine("\t3. Logga ut");
-                Console.Write("\t4. Avsluta     ");
+                Console.WriteLine("\t3. Uppdatera sidan");
+                Console.WriteLine("\t4. Logga ut");
+                Console.Write("\t5. Avsluta     ");
                 ConsoleKeyInfo key = Console.ReadKey(true);
                 if(key.Key == ConsoleKey.D1 || key.Key == ConsoleKey.NumPad1 || key.Key == ConsoleKey.D2 || key.Key == ConsoleKey.NumPad2 ||
-                   key.Key == ConsoleKey.D3 || key.Key == ConsoleKey.NumPad3 || key.Key == ConsoleKey.D4 || key.Key == ConsoleKey.NumPad4)
+                   key.Key == ConsoleKey.D3 || key.Key == ConsoleKey.NumPad3 || key.Key == ConsoleKey.D4 || key.Key == ConsoleKey.NumPad4 ||
+                   key.Key == ConsoleKey.D5 || key.Key == ConsoleKey.NumPad5)
                 {
                     return key.KeyChar;
                 }
@@ -74,12 +76,14 @@ namespace DeluxeParking
         public static void LogOut()
         {
             Console.WriteLine();
+            Console.WriteLine();
             Console.WriteLine("\tDu loggas ut.");
             Thread.Sleep(2000);
         }
 
         public static bool CloseApp()
         {
+            Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine("\tProgrammet avslutas.");
             Thread.Sleep(2000);

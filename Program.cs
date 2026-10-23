@@ -20,7 +20,9 @@ namespace DeluxeParking
                 while(appRunning)
                 {
 
-                    char menuPick = UI.PrintMenu(parkingGarage.Vehicles); // Skriver ut översikt + meny och returnerar ett menyval i form av en int
+
+                    char menuPick = UI.PrintMenu(parkingGarage.Vehicles); // Skriver ut översikt + meny och returnerar ett menyval i form av en char
+ 
 
                     switch(menuPick)
                     {
@@ -29,7 +31,7 @@ namespace DeluxeParking
 
                             Console.Clear();
                             Console.WriteLine();
-                            Console.WriteLine("-------------------------------------------- DELUXE PARKING: CHECK-IN --------------------------------------------");
+                            Console.WriteLine("--------------------------------------------- DELUXE PARKING: CHECK-IN ---------------------------------------------");
                             Console.WriteLine();
                             Vehicle newVehicle = Helpers.GenerateRandomVehicle();
                             Console.WriteLine();
@@ -37,6 +39,8 @@ namespace DeluxeParking
                             Thread.Sleep(2000);
                             Console.WriteLine();
                             ParkingGarage.CheckInVehicle(parkingGarage.Vehicles, newVehicle);
+                            Console.WriteLine();
+                            Console.WriteLine();
                             Console.WriteLine();
                             Console.WriteLine("\tTryck för att återgå till menyn.");
                             Console.ReadKey(true);
@@ -46,19 +50,22 @@ namespace DeluxeParking
 
                             Console.Clear();
                             Console.WriteLine();
-                            Console.WriteLine("-------------------------------------------- DELUXE PARKING: CHECK-OUT -------------------------------------------");
+                            Console.WriteLine("--------------------------------------------- DELUXE PARKING: CHECK-OUT --------------------------------------------");
                             Console.WriteLine();
                             ParkingGarage.PrintGarage(parkingGarage.Vehicles);
                             ParkingGarage.ChechOutVehicle(parkingGarage.Vehicles);
                             break;
 
                         case '3':
+                            continue;
+
+                        case '4':
 
                             UI.LogOut();
                             appRunning = false;
                             break;
 
-                        case '4':
+                        case '5':
 
                             appRunning = UI.CloseApp();
                             appRunning = false;

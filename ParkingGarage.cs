@@ -25,7 +25,7 @@ namespace DeluxeParking
         {
             Console.WriteLine();
             Console.WriteLine($"\t{"Parkering", -16}{"Fordonstyp", -16}{"Reg. nr", -15}{"Färg", -12}{"Ankomsttid",-20}{"Kostnad", -15}{"Övrig info"}");
-            Console.WriteLine("------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("--------------------------------------------------------------------------------------------------------------------");
             for (int i = 0; i < garage.Length; i++)
             {
                 if (garage[i].Count == 2)
@@ -55,7 +55,7 @@ namespace DeluxeParking
                     }
                 }
             }
-            Console.WriteLine("-------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("---------------------------------------------------------------------------------------------------------------------");
 
         }
 
@@ -146,7 +146,7 @@ namespace DeluxeParking
             string input = Console.ReadLine();
             bool foundVehicle = false;
 
-            for (int i = 0; i < garage.Length - 1; i++)
+            for (int i = 0; i < garage.Length; i++)
             {
                 for (int j = 0; j < garage[i].Count; j++)
                 {
@@ -155,12 +155,12 @@ namespace DeluxeParking
                         foundVehicle = true;
                         int parkedTime = (int)(DateTime.Now - garage[i][j].ArrivalTime).TotalMinutes;
 
-                        if (garage[i][0] is Bus)
+                        if (garage[i][0] is Bus && i + 1 < garage.Length)
                         {
                             garage[i].Clear();
                             garage[i + 1].Clear();
                         }
-                        if (garage[i][j] is Motorcycle)
+                        else if (garage[i][j] is Motorcycle)
                         {
                             garage[i].RemoveAt(j);
                         }
@@ -174,6 +174,7 @@ namespace DeluxeParking
                         Console.WriteLine($"\tTid parkerad: {parkedTime} minuter");
                         Console.WriteLine();
                         Console.WriteLine($"\tPris: {parkedTime * 1.5} SEK (1,5 SEK/minut)");
+                        Console.WriteLine();
                         Console.WriteLine();
                         Console.Write("\tTryck för att återgå till menyn.");
                         Console.ReadKey(true);
