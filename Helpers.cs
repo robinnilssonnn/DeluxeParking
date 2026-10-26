@@ -8,11 +8,11 @@ namespace DeluxeParking
     {
         public static Vehicle GenerateRandomVehicle()
         {
-            string color = RandomColor();
-            string regNr = RandomRegNr();
+            string color = RandomizeColor();
+            string regNr = RandomizeRegNr();
             bool electric = (Random.Shared.Next(0, 2) == 0);
             int nrOfPassengers = Random.Shared.Next(1, 50);
-            string mcBrand = RandomMcBrand();
+            string mcBrand = RandomizeMcBrand();
 
             int vehicleType = Random.Shared.Next(1, 4);
             if (vehicleType == 1)
@@ -29,7 +29,7 @@ namespace DeluxeParking
             }
         }
 
-        public static string RandomColor()
+        private static string RandomizeColor()
         {
             string[] colors =
 
@@ -57,7 +57,7 @@ namespace DeluxeParking
             
         }
 
-        public static string RandomMcBrand()
+        private static string RandomizeMcBrand()
         {
             string[] motorcycleBrands =
 
@@ -78,7 +78,7 @@ namespace DeluxeParking
         }
 
 
-        public static string RandomRegNr()
+        private static string RandomizeRegNr()
         {
             List<char> randomRegNr = new List<char>();
 
@@ -98,7 +98,5 @@ namespace DeluxeParking
 
 
         }
-
-
     }
 }

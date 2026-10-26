@@ -60,25 +60,16 @@ namespace DeluxeParking
                 {
                     return key.KeyChar;
                 }
-                //if (int.TryParse(Console.ReadLine(), out int input) && input >= 1 && input <= 4)
-                //{
-                //    return input;
-                //}
-                //else
-                //{
-                //    Console.WriteLine();
-                //    Console.Write("\tOgiltigt val. Tryck för att försöka igen.");
-                //    Console.ReadKey(true);
-                //}
             }
         }
 
-        public static void LogOut()
+        public static bool LogOut()
         {
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine("\tDu loggas ut.");
             Thread.Sleep(2000);
+            return false;
         }
 
         public static bool CloseApp()
@@ -87,7 +78,7 @@ namespace DeluxeParking
             Console.WriteLine();
             Console.WriteLine("\tProgrammet avslutas.");
             Thread.Sleep(2000);
-            return false;
+            return true;
         }
     }
 }

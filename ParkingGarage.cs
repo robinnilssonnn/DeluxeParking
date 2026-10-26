@@ -6,7 +6,7 @@ namespace DeluxeParking
 {
     internal class ParkingGarage
     {
-        public int NrOfParkingSpots { get; set; }
+        private int NrOfParkingSpots { get; set; }
         public List<Vehicle>[] Vehicles { get; set; }
 
         public ParkingGarage(int nrOfParkingSports)
@@ -28,6 +28,7 @@ namespace DeluxeParking
             Console.WriteLine("--------------------------------------------------------------------------------------------------------------------");
             for (int i = 0; i < garage.Length; i++)
             {
+                // Om listan på platsen har två fordon = MC --> skriv ut två rader med samma platsnummer
                 if (garage[i].Count == 2)
                 {
                     Console.Write($"\tPlats {i + 1} ");
@@ -35,6 +36,7 @@ namespace DeluxeParking
                     Console.Write($"\tPlats {i + 1} ");
                     garage[i][1].ParkedCarInfo();
                 }
+                // Står det en buss på platsen -> skriv ut två platser på samma rad 
                 else if (garage[i].Count > 0 && garage[i][0] is Bus )
                 {
                     Console.Write($"\tPlats {i + 1}-{i + 2}");
@@ -84,8 +86,10 @@ namespace DeluxeParking
 
             if (newVehicle is Bus)
             {
+                // Kolla efter ledig plats fram till näst sista parkeringplatsen eftersom buss tar upp 2 platsen så sista behöver inte kollas
                 for (int i = 0; i < garage.Length - 1; i++)
                 {
+                    // Kolla efter två lediga platser bredvid varandra och lägg till busssen på båda
                     if (garage[i].Count == 0 && garage[i + 1].Count == 0)
                     {
                         garage[i].Add(newVehicle);
@@ -107,6 +111,7 @@ namespace DeluxeParking
             {
                 for (int i = 0; i < garage.Length; i++)
                 {
+                    // Kolla först alla platser där det redan står ett fordon och om det är en motorcykel på platsen
                     if (garage[i].Count == 1 && garage[i][0] is Motorcycle)
                     {
                         
@@ -121,6 +126,7 @@ namespace DeluxeParking
                 {
                     for (int i = 0; i < garage.Length; i++)
                     {
+                        //Om det inte finns någon plats med en motorcykel redan -> leta efter tom plats
                         if (garage[i].Count == 0)
                         {
                             garage[i].Add(newVehicle);
@@ -150,9 +156,11 @@ namespace DeluxeParking
             {
                 for (int j = 0; j < garage[i].Count; j++)
                 {
+                    // Jämför användarens inmatning mot alla fordon i garagets reg nr
                     if (garage[i][j].RegistrationNumber == input.ToUpper())
                     {
                         foundVehicle = true;
+                        //Kolla hur många minuter fordonet parkerat
                         double parkedTime = (DateTime.Now - garage[i][j].ArrivalTime).TotalMinutes;
                         double cost = parkedTime * 1.5;
 
@@ -170,7 +178,7 @@ namespace DeluxeParking
                             garage[i].Clear();
                         }
                         Console.WriteLine();
-                        Console.WriteLine($"\tFordon med registreringsnummer {input} utcheckat.");
+                        Console.WriteLine($"\tFordon med registreringsnummer {input.ToUpper()} utcheckat.");
                         Console.WriteLine();
                         Console.WriteLine($"\tTid parkerad: {parkedTime:F1} minuter");
                         Console.WriteLine();
@@ -196,7 +204,7 @@ namespace DeluxeParking
             
         }
 
-        public static void PrintParkingNotFound()
+        private static void PrintParkingNotFound()
         {
             Console.WriteLine();
             Console.Write("\tParkeringsplats saknades för fordonstypen. Den får tyvärr ingen plats.");

@@ -31,7 +31,7 @@ namespace DeluxeParking
 
     internal class Car : Vehicle
     {
-        public bool Electric { get; set; }
+        private bool Electric { get; set; }
 
         public Car(string registrationNumber, string color, DateTime arrivalTime, bool electric) : base(registrationNumber, color, arrivalTime)
         {
@@ -45,6 +45,7 @@ namespace DeluxeParking
 
         public override void ParkedCarInfo()
         {
+            // Beräkna nuvarande kostnad beroende på hur länge fordonet stått
             double cost = (DateTime.Now - ArrivalTime).TotalMinutes * 1.5;
             Console.WriteLine($"\tBil\t\t{RegistrationNumber, -15}{Color, -12}{ArrivalTime,-20:yyyy-MM-dd HH:mm}{cost:F1}:-\t      {(Electric ? "Elbil" : "Bensinbil"), -15}");
         }
@@ -52,7 +53,7 @@ namespace DeluxeParking
 
     internal class Motorcycle : Vehicle
     {
-        public string Brand { get; set; }
+        private string Brand { get; set; }
 
         public Motorcycle(string registrationNumber, string color, DateTime arrivalTime, string brand) : base(registrationNumber, color, arrivalTime)
         {
@@ -73,7 +74,7 @@ namespace DeluxeParking
 
     internal class Bus : Vehicle
     {
-        public int NrOfPassengers { get; set; }
+        private int NrOfPassengers { get; set; }
 
         public Bus(string registrationNumber, string color, DateTime arrivalTime, int nrOfPassengers) : base(registrationNumber, color, arrivalTime)
         {

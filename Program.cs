@@ -6,22 +6,23 @@ namespace DeluxeParking
     {
         static void Main(string[] args)
         {
-            ParkingGarage parkingGarage = new ParkingGarage(15); // Skapar ett parkeringsgarage som har 15 platser och tar Vehicle-objekt
+            ParkingGarage parkingGarage = new ParkingGarage(15); 
 
+            // bool-variabler som hanterar inloggning samt nedstägning av applikationen
             bool appRunning = true;
             bool exitApp = false;
 
             while(!exitApp)
             {
 
-                //UI.PrintLogInPage();
+                UI.PrintLogInPage();
                 appRunning = true;
 
                 while(appRunning)
                 {
 
-
-                    char menuPick = UI.PrintMenu(parkingGarage.Vehicles); // Skriver ut översikt + meny och returnerar ett menyval i form av en char
+                    // Skriv ut översikten + menyn och returnera användarens menyval som en char
+                    char menuPick = UI.PrintMenu(parkingGarage.Vehicles);
  
 
                     switch(menuPick)
@@ -33,11 +34,14 @@ namespace DeluxeParking
                             Console.WriteLine();
                             Console.WriteLine("--------------------------------------------- DELUXE PARKING: CHECK-IN ---------------------------------------------");
                             Console.WriteLine();
+                            // Slumpa fram ett ankommande fordon-objekt
                             Vehicle newVehicle = Helpers.GenerateRandomVehicle();
                             Console.WriteLine();
+                            // Skriv ut vilket fordon som kommer till parkeringen
                             newVehicle.ArrivingCarInfo();
                             Thread.Sleep(2000);
                             Console.WriteLine();
+                            // Checka in fordonet på passande plats beroende på fordonstyp om det finns plats och lagra ankomsttiden
                             ParkingGarage.CheckInVehicle(parkingGarage.Vehicles, newVehicle);
                             Console.WriteLine();
                             Console.WriteLine();
@@ -53,6 +57,7 @@ namespace DeluxeParking
                             Console.WriteLine("--------------------------------------------- DELUXE PARKING: CHECK-OUT --------------------------------------------");
                             Console.WriteLine();
                             ParkingGarage.PrintGarage(parkingGarage.Vehicles);
+                            // Be användaren ange reg nr på fordonet som ska checkas ut och skriv ut kostnaden. Meddela användaren vid ogiltig/icke-existerande reg nr
                             ParkingGarage.ChechOutVehicle(parkingGarage.Vehicles);
                             break;
 
@@ -61,19 +66,18 @@ namespace DeluxeParking
 
                         case '4':
 
-                            UI.LogOut();
-                            appRunning = false;
+                            //appRunning = false hoppar ur inre loopen och tillbaka till inloggning
+                            appRunning = UI.LogOut();
                             break;
 
                         case '5':
 
-                            appRunning = UI.CloseApp();
+                            //exitApp = true och appRunning = false gör att programmet hoppar ur båda loopar och avslutas
+                            exitApp = UI.CloseApp();
                             appRunning = false;
-                            exitApp = true;
                             break;
 
                     }
-
                 }
             }
         }
