@@ -41,6 +41,8 @@ namespace DeluxeParking
         public override void ArrivingCarInfo()
         {
             Console.WriteLine($"\tEn bil med registreringsnummer {RegistrationNumber} ankommer till parkeringen. ");
+            Console.WriteLine();
+            Console.WriteLine();
         }
 
         public override void ParkedCarInfo()
@@ -63,6 +65,8 @@ namespace DeluxeParking
         public override void ArrivingCarInfo()
         {
             Console.WriteLine($"\tEn motorcyckel med registreringsnummer {RegistrationNumber} ankommer till parkeringen. ");
+            Console.WriteLine();
+            Console.WriteLine();
         }
 
         public override void ParkedCarInfo()
@@ -84,10 +88,12 @@ namespace DeluxeParking
         public override void ArrivingCarInfo()
         {
             Console.WriteLine($"\tEn buss med registreringsnummer {RegistrationNumber} ankommer till parkeringen. ");
+            Console.WriteLine();
+            Console.WriteLine();
         }
     
 
-    public override void ParkedCarInfo()
+        public override void ParkedCarInfo()
         {
             double cost = (DateTime.Now - ArrivalTime).TotalMinutes * 1.5;
             Console.WriteLine($"\tBuss\t\t{RegistrationNumber, -15}{Color, -12}{ArrivalTime,-20:yyyy-MM-dd HH:mm}{cost:F1}:-\t      {NrOfPassengers} passagerare");
