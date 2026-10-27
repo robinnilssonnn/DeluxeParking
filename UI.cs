@@ -23,7 +23,7 @@ namespace DeluxeParking
                 if (username == "Admin" && password == "1234")
                 {
                     Console.WriteLine();
-                    Console.WriteLine("\tDu loggas in.");
+                    Console.WriteLine("\tDu loggas in...");
                     Thread.Sleep(1500);
                     break;
                 }

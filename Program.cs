@@ -62,17 +62,18 @@ namespace DeluxeParking
                             break;
 
                         case '3':
+
                             continue;
 
                         case '4':
 
-                            //appRunning = false hoppar ur inre loopen och tillbaka till inloggning
+                            //appRunning = false hoppar ur inre loopen och tillbaka till inloggningen utan att avsluta appen
                             appRunning = UI.LogOut();
                             break;
 
                         case '5':
 
-                            //exitApp = true och appRunning = false gör att programmet hoppar ur båda loopar och avslutas
+                            //exitApp = true + appRunning = false gör att programmet hoppar ur båda loopar och avslutas
                             exitApp = UI.CloseApp();
                             appRunning = false;
                             break;
